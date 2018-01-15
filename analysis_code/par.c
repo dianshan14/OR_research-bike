@@ -11,7 +11,7 @@ int main(int argc, const char *argv[])
 	DIR* proc_dir;
 	FILE* proc = NULL, *output;
 	char filename[100]={0};
-	proc_dir = opendir(".");
+	proc_dir = opendir("./data");
 	struct dirent* proc_content;
 	char content[1000]={0};
 	int num = 0;
@@ -21,7 +21,7 @@ int main(int argc, const char *argv[])
 		if(strcmp(proc_content->d_name,"..") && strcmp(proc_content->d_name,".") && strcmp(proc_content->d_name,"a.out") && strcmp(proc_content->d_name, "raw_data") && strcmp(proc_content->d_name, "pre.py") && strcmp(proc_content->d_name, "probability.py") && strcmp(proc_content->d_name, "par.c") && strcmp(proc_content->d_name, "makefile"))
 		{
 			memset(filename, '\0', sizeof(filename));
-			sprintf(filename, "%s", proc_content->d_name);
+			sprintf(filename, "./data/%s", proc_content->d_name);
 			proc = fopen(filename, "r");
 			//printf("%s\n", proc_content->d_name);
 			while(!feof(proc))
